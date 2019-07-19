@@ -1,0 +1,11 @@
+.space {
+    margin-bottom: 20px;
+    margin-left: 70px;
+}
+.space-right {
+    margin-right: 10px;
+}
+.title-center {
+    text-align: center;
+    vertical-align: center !important;
+}

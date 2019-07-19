@@ -1,0 +1,103 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <button class="btn btn-primary pull-right space" (click)="openModalAdd(add)">Add</button>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th class="title-center">First Name</th>
+                        <th class="title-center">Last Name</th>
+                        <th class="title-center">Designation</th>
+                        <th class="title-center">Salary($)</th>
+                        <th class="title-center">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users">
+                        <td class="title-center">{{user.firstname}}</td>
+                        <td class="title-center">{{user.lastname}}</td>
+                        <td class="title-center">{{user.designation}}</td>
+                        <td class="title-center">{{user.salary}}</td>
+                        <td class="title-center">
+                            <span class="space-right">
+                                <button class="btn btn-warning" (click)="openModalEdit(edit, user)"> Edit </button>
+                            </span>
+                            <button class="btn btn-danger"  (click)="openModalDelete(delete, user._id)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<ng-template #add>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Add</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <label for="name">First Name</label>
+        <input type="text" class="form-control" name="firstname" [(ngModel)]="user.firstname">
+        <p class="text-danger">{{errorMsg.firstname}}</p>
+
+        <label for="name">Last Name</label>
+        <input type="text" class="form-control" name="lastname" [(ngModel)]="user.lastname">
+        <p class="text-danger">{{errorMsg.lastname}}</p>
+
+        <label for="designation">Designation</label>
+        <input type="text" class="form-control" name="designation" [(ngModel)]="user.designation">
+        <p class="text-danger">{{errorMsg.designation}}</p>
+
+        <label for="salary">Salary($)</label>
+        <input type="text" class="form-control" name="salary" [(ngModel)]="user.salary">
+        <p class="text-danger">{{errorMsg.salary}}</p>
+
+        <button class="btn btn-primary" (click)="onSave()">Save</button>
+    </div>
+</ng-template>
+
+<ng-template #edit>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Edit</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <label for="name">First Name</label>
+        <input type="text" class="form-control" name="firstname" [(ngModel)]="editUser.firstname">
+        <p class="text-danger">{{errorMsg.firstname}}</p>
+
+        <label for="name">Last Name</label>
+        <input type="text" class="form-control" name="lastname" [(ngModel)]="editUser.lastname">
+        <p class="text-danger">{{errorMsg.lastname}}</p>
+
+        <label for="designation">Designation</label>
+        <input type="text" class="form-control" name="designation" [(ngModel)]="editUser.designation">
+        <p class="text-danger">{{errorMsg.designation}}</p>
+
+        <label for="salary">Salary</label>
+        <input type="text" class="form-control" name="salary" [(ngModel)]="editUser.salary">
+        <p class="text-danger">{{errorMsg.salary}}</p>
+
+        <button class="btn btn-primary" (click)="onUpdate()">Update</button>
+    </div>
+</ng-template>
+<ng-template #delete>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Delete</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p>Are you sure you want to delete this user?</p>
+        <span class="space-right">
+            <button (click)="modalRef.hide()" class="btn primary">No</button>
+        </span>
+        <button class="btn btn-danger" (click)="deleteUser()">Yes</button>
+    </div>
+</ng-template>
