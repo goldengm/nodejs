@@ -22,7 +22,7 @@
     "body-parser": "^1.19.0",
     "bootstrap": ">=4.3.1",
     "express": "^4.17.1",
-    "mongoose": "^5.7.0",
+    "mongoose": "^5.7.5",
     "ngx-bootstrap": "^5.1.1",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
